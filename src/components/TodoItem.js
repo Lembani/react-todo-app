@@ -1,12 +1,9 @@
 import React from 'react';
 
-class TodoItem extends React.PureComponent {
-
-render() {
+const TodoItem = (props) => {
   return(
-    <li>{this.props.todo.title}</li>
+    <li>{props.todo.title}</li>
   );
-}
 }
 
 export default TodoItem;
