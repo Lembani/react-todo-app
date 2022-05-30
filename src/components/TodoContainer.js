@@ -26,7 +26,7 @@ class TodoContainer extends React.PureComponent {
   render() {
     return(
       <>
-        <h1>Todo App</h1>
+        <h1>Todos</h1>
         <TodoList todos={this.state.todos} />
       </>
     );
