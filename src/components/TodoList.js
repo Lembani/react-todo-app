@@ -1,4 +1,5 @@
 import React from 'react';
+import TodoItem from './TodoItem';
 
 class TodoList extends React.PureComponent {
   render() {
@@ -7,7 +8,7 @@ class TodoList extends React.PureComponent {
         <ul>
           { 
           this.props.todos.map((todo) => {
-            return <li key={todo.id}>{todo.title}</li>
+            return <TodoItem key={todo.id} todo={todo} />
           })
         }
         </ul>
