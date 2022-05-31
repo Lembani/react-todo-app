@@ -1,20 +1,41 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import TodoItem from './TodoItem';
 
 class TodoList extends React.PureComponent {
   render() {
-    return(
+    const { todos, handleChangeProps } = this.props;
+    return (
       <>
         <ul>
-          { 
-          this.props.todos.map((todo) => {
-            return <TodoItem key={todo.id} todo={todo} handleChangeProps={() => this.props.handleChangeProps} />
-          })
-        }
+          {
+            todos.map((todo) => (
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                handleChangeProps={handleChangeProps}
+              />
+            ))
+          }
         </ul>
       </>
     );
   }
 }
+
+TodoList.propTypes = {
+  todos: PropTypes.shape(
+    [
+      {
+        id: PropTypes.number,
+        completed: PropTypes.bool,
+        title: PropTypes.string,
+        map: PropTypes.func,
+      },
+    ],
+  ).isRequired,
+  handleChangeProps: PropTypes.func.isRequired,
+};
 
 export default TodoList;
