@@ -3,11 +3,16 @@ import PropTypes from 'prop-types';
 
 class TodoItem extends React.PureComponent {
   render() {
-    const { todo, handleChangeProps } = this.props;
+    const { todo, handleChangeProps, deleteTodoProps } = this.props;
     return (
       <li>
-        <input type="checkbox" checked={todo.completed} onChange={() => handleChangeProps(todo.id)} />
+        <input
+          type="checkbox"
+          checked={todo.completed}
+          onChange={() => handleChangeProps(todo.id)}
+        />
         {todo.title}
+        <button type="button" onClick={() => deleteTodoProps(todo.id)}>Delete</button>
       </li>
     );
   }
@@ -22,6 +27,7 @@ TodoItem.propTypes = {
     },
   ).isRequired,
   handleChangeProps: PropTypes.func.isRequired,
+  deleteTodoProps: PropTypes.func.isRequired,
 };
 
 export default TodoItem;
