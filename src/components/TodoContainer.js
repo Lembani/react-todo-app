@@ -28,7 +28,6 @@ class TodoContainer extends React.PureComponent {
   }
 
   handleChange = (id) => {
-    console.log(id);
     this.setState((prevState) => ({
       todos: prevState.todos.map((todo) => {
         if (todo.id === id) {
@@ -42,12 +41,25 @@ class TodoContainer extends React.PureComponent {
     }));
   };
 
+  delTodo = (id) => {
+    const { todos } = this.state;
+    this.setState({
+      todos: [
+        ...todos.filter((todo) => todo.id !== id),
+      ],
+    });
+  };
+
   render() {
     const { todos } = this.state;
     return (
       <>
         <Header />
-        <TodoList todos={todos} handleChangeProps={this.handleChange} />
+        <TodoList
+          todos={todos}
+          handleChangeProps={this.handleChange}
+          deleteTodoProps={this.delTodo}
+        />
       </>
     );
   }
