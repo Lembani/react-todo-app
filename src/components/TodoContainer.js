@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from './Header';
+import InputTodo from './InputTodo';
 import TodoList from './TodoList';
 
 class TodoContainer extends React.PureComponent {
@@ -55,6 +56,7 @@ class TodoContainer extends React.PureComponent {
     return (
       <>
         <Header />
+        <InputTodo />
         <TodoList
           todos={todos}
           handleChangeProps={this.handleChange}
