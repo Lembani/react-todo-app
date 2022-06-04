@@ -8,6 +8,8 @@
 
 - ReactJS
 - JavaScript
+- Redux
+- CSS
 
 ## Live Demo Link
 
