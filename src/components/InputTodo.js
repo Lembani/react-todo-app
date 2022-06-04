@@ -1,4 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
+import { FaPlusCircle } from 'react-icons/fa';
 
 class InputTodo extends React.PureComponent {
   constructor(props) {
@@ -17,16 +19,27 @@ class InputTodo extends React.PureComponent {
   handleSubmit = (e) => {
     e.preventDefault();
     const { title } = this.state;
-    console.log('submit: ', title);
+    const { addTodoProps } = this.props;
+    if (title.trim()) {
+      addTodoProps(title);
+      this.setState({
+        title: '',
+      });
+    } else {
+      // eslint-disable-next-line no-alert
+      alert('Please write item');
+    }
   };
 
   render() {
     const { title } = this.state;
     return (
       <>
-        <form onSubmit={this.hamdleSubmit}>
-          <input type="text" name="title" placeholder="Add Todo..." value={title} onChange={this.onChange} />
-          <button type="button">Submit</button>
+        <form className="form-container" onSubmit={this.hamdleSubmit}>
+          <input type="text" name="title" className="input-text" placeholder="Add Todo..." value={title} onChange={this.onChange} />
+          <button type="button" className="input-submit">
+            <FaPlusCircle color="darkcyan" size="20px" className="submit-icon" />
+          </button>
         </form>
       </>
     );
